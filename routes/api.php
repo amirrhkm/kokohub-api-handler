@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\BroadcastController;
+use App\Http\Controllers\AttendanceController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -23,3 +24,10 @@ Route::post('/broadcasts', [BroadcastController::class, 'store']);
 Route::get('/broadcasts/{id}', [BroadcastController::class, 'show']);
 Route::put('/broadcasts/{id}', [BroadcastController::class, 'update']);
 Route::delete('/broadcasts/{id}', [BroadcastController::class, 'destroy']);
+
+// Attendance routes
+Route::get('/attendances', [AttendanceController::class, 'index']);
+Route::post('/attendances', [AttendanceController::class, 'store']);
+Route::get('/attendances/{id}', [AttendanceController::class, 'show']);
+Route::put('/attendances/{id}', [AttendanceController::class, 'update']);
+Route::delete('/attendances/{id}', [AttendanceController::class, 'destroy']);
