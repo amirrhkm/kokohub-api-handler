@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('broadcasts', function (Blueprint $table) {
-            $table->id('broadcast_id');
+            $table->string('broadcast_id')->primary();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Koko::class)->constrained()->cascadeOnDelete();
             $table->string('title');
