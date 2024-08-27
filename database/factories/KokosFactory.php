@@ -16,8 +16,6 @@ class KokosFactory extends Factory
      */
     public function definition(): array
     {
-        static $counter = 1;
-
         /**
          * KB: Badan Beruniform
          * KS: Sukan dan Permainan
