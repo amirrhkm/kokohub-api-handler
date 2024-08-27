@@ -2,43 +2,48 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use App\Models\Achievement;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
- */
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * The name of the factory's corresponding model.
+     *
+     * @var string
      */
-    protected static ?string $password;
+    protected $model = User::class;
 
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function definition(): array
     {
+        // Define prefixes and user types
+        $prefixes = [
+            'student' => 'S',
+            'teacher' => 'T',
+        ];
+
+        // Randomly select a user type
+        $userType = array_rand($prefixes);
+        $prefix = $prefixes[$userType];
+
+        // Generate a unique ID with prefix
+        static $counter = 1;
+        $userId = $prefix . str_pad($counter++, 4, '0', STR_PAD_LEFT);
+
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
+            'user_id' => $userId,
+            'achievement_id' => Achievement::factory(),
+            'username' => $this->faker->unique()->userName,
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
-    }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
     }
 }

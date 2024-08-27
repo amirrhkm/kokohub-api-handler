@@ -6,7 +6,10 @@ use App\Models\Koko;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class AchievementsFactory extends Factory
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Attendance>
+ */
+class AttendanceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,13 +18,13 @@ class AchievementsFactory extends Factory
      */
     public function definition(): array
     {
-        $tier = ['School', 'District', 'State', 'National'];
+
         return [
             'user_id' => User::factory(),
             'koko_id' => Koko::factory(),
-            'name' => 'Sample Achievement Name',
-            'years' => $this->faker->year(),
-            'tier' => $this->faker->randomElement($tier),
+            'status' => $this->faker->boolean,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
