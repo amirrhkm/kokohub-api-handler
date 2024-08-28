@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('attendances', function (Blueprint $table) {
             $table->id('attendance_id');
-            $table->foreignId('user_id')->constrained('users', 'user_id')->onDelete('cascade');
-            $table->string('koko_id'); // Changed to string to match koko_id type
+            $table->string('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->string('koko_id');
             $table->foreign('koko_id')->references('koko_id')->on('kokos')->onDelete('cascade');            
             $table->boolean('status');
             $table->timestamps();
