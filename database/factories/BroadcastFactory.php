@@ -9,7 +9,7 @@ use App\Models\User;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Broadcast>
  */
-class BroadcastsFactory extends Factory
+class BroadcastFactory extends Factory
 {
     /**
      * Define the model's default state.

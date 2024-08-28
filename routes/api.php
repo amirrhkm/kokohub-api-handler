@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KokoController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AchievementController;
@@ -39,3 +41,17 @@ Route::post('/achievements', [AchievementController::class, 'store']);
 Route::get('/achievements/{id}', [AchievementController::class, 'show']);
 Route::put('/achievements/{id}', [AchievementController::class, 'update']);
 Route::delete('/achievements/{id}', [AchievementController::class, 'destroy']);
+
+// User routes
+Route::get('users', [UserController::class, 'index']);
+Route::post('users', [UserController::class, 'store']);
+Route::get('users/{id}', [UserController::class, 'show']);
+Route::put('users/{id}', [UserController::class, 'update']);
+Route::delete('users/{id}', [UserController::class, 'destroy']);
+
+// Koko routes
+Route::get('kokos', [KokoController::class, 'index']);
+Route::post('kokos', [KokoController::class, 'store']);
+Route::get('kokos/{id}', [KokoController::class, 'show']);
+Route::put('kokos/{id}', [KokoController::class, 'update']);
+Route::delete('kokos/{id}', [KokoController::class, 'destroy']);
