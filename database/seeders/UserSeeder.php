@@ -3,17 +3,18 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Achievement;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        // Seed 50 users
-        User::factory()->count(50)->create();    
+        $users = User::factory()->count(50)->create();
+
+        $users->each(function ($user) {
+            $achievement = Achievement::factory()->create(['user_id' => $user->user_id]);
+            $user->update(['achievement_id' => $achievement->id]);
+        });
     }
 }

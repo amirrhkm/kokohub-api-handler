@@ -17,8 +17,10 @@ class AchievementFactory extends Factory
     {
         $tier = ['School', 'District', 'State', 'National'];
         return [
-            'user_id' => User::factory(),
-            'koko_id' => Koko::factory(),
+            'user_id' => User::inRandomOrder()->first()->user_id,
+            // 'koko_id' => Koko::factory(),
+            // 'user_id' => null,
+            'koko_id' => Koko::inRandomOrder()->first()->koko_id,
             'name' => 'Sample Achievement Name',
             'years' => $this->faker->year(),
             'tier' => $this->faker->randomElement($tier),
