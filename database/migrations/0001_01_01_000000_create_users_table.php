@@ -13,8 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->foreignIdFor(Achievement::class)->constrained()->cascadeOnDelete();
+            $table->string('user_id')->primary();
+            // $table->foreignIdFor(Achievement::class)->constrained()->cascadeOnDelete();
+            // $table->foreignIdFor(Achievement::class)->constrained()->cascadeOnDelete();
+            $table->string('achievement_id')->nullable();
+            $table->foreign('achievement_id')->references('achievement_id')->on('achievements')->onDelete('cascade');
+            // $table->foreignId('achievement_id')->references('achievement_id')->on('achievements')->onDelete('cascade');
             $table->string('username');
             $table->string('password');
             $table->rememberToken();
