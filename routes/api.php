@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BroadcastController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\EnrollController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -55,3 +56,10 @@ Route::post('kokos', [KokoController::class, 'store']);
 Route::get('kokos/{id}', [KokoController::class, 'show']);
 Route::put('kokos/{id}', [KokoController::class, 'update']);
 Route::delete('kokos/{id}', [KokoController::class, 'destroy']);
+
+// Enroll routes
+Route::get('enrolls', [EnrollController::class, 'index']);
+Route::post('enrolls', [EnrollController::class, 'store']);
+Route::get('enrolls/{id}', [EnrollController::class, 'show']);
+Route::put('enrolls/{id}', [EnrollController::class, 'update']);
+Route::delete('enrolls/{id}', [EnrollController::class, 'destroy']);
