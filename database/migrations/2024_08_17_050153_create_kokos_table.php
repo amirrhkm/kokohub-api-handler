@@ -20,13 +20,6 @@ return new class extends Migration
             $table->integer('teacher_capacity');
             $table->timestamps();
         });
-
-        Schema::create('user_koko', function (Blueprint $table) {
-            $table->id();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Koko::class)->constrained()->cascadeOnDelete();
-            $table->timestamps();
-        });
     }
 
     /**

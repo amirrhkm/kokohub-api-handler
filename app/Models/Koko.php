@@ -14,9 +14,9 @@ class Koko extends Model
         'koko_id', 'name', 'student_capacity', 'teacher_capacity',
     ];
     
-    public function users()
+    public function enrolls()
     {
-        return $this->belongsToMany(User::class, 'user_koko')->withPivot('roles', 'admin');
+        return $this->hasMany(Enroll::class, 'koko_id', 'koko_id');
     }
 
     public function achievements()

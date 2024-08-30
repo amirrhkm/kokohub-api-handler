@@ -15,8 +15,10 @@ return new class extends Migration
     {
         Schema::create('broadcasts', function (Blueprint $table) {
             $table->string('broadcast_id')->primary();
-            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(Koko::class)->constrained()->cascadeOnDelete();
+            $table->string('user_id');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
+            $table->string('koko_id');
+            $table->foreign('koko_id')->references('koko_id')->on('kokos')->onDelete('cascade'); 
             $table->string('title');
             $table->string('type');
             $table->string('content');

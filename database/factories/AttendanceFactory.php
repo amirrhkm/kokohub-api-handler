@@ -2,27 +2,21 @@
 
 namespace Database\Factories;
 
-use App\Models\Koko;
+use App\Models\Attendance;
 use App\Models\User;
+use App\Models\Koko;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Attendance>
- */
 class AttendanceFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Attendance::class;
+
     public function definition(): array
     {
-
         return [
-            'user_id' => User::factory(),
-            'koko_id' => Koko::factory(),
-            'status' => $this->faker->boolean,
+            'user_id' => User::inRandomOrder()->first()->user_id,
+            'koko_id' => Koko::inRandomOrder()->first()->koko_id,
+            'status' => $this->faker->boolean, // 50% chance of true/false
             'created_at' => now(),
             'updated_at' => now(),
         ];
