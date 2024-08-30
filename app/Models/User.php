@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->hasMany(Achievement::class, 'user_id');
     }
 
-    public function koko()
+    public function enrolls()
     {
-        return $this->belongsToMany(Koko::class, 'user_koko')->withPivot('roles', 'admin');
+        return $this->hasMany(Enroll::class, 'user_id', 'user_id');
     }
 
     public function broadcasts()
