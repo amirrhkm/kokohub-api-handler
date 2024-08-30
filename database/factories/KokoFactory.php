@@ -17,13 +17,6 @@ class KokoFactory extends Factory
         'KB05' => "Persatuan Bulan Sabit Merah",
         'KB06' => "Kadet Polis",
         'KB07' => "Kadet Remaja Sekolah",
-        'KB08' => "Pandu Puteri",
-        'KB09' => "Pergerakan Puteri Islam",
-        'KB10' => "Pengakap",
-        'KB11' => "Kadet Bomba",
-        'KB12' => "Persatuan Bulan Sabit Merah",
-        'KB13' => "Kadet Polis",
-        'KB14' => "Kadet Remaja Sekolah",
     
         'KS01' => "Bola Sepak",
         'KS02' => "Bola Jaring",
