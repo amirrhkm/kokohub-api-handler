@@ -30,7 +30,7 @@ class BroadcastFactory extends Factory
         $id = $broadcastType . str_pad($counter++, 2, '0', STR_PAD_LEFT);
 
         return [
-            'id' => $id,
+            'broadcast_id' => $id,
             'user_id' => User::factory(),
             'koko_id' => Koko::factory(),
             'title' => $this->faker->sentence(5),
