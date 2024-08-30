@@ -119,3 +119,12 @@ git push origin <name>/<prefix>/<module>
 5. Create a pull request
     - Open a pull request from the forked repository to the main repository.
     - Ensure that the pull request is against the `main` branch.
+
+## Contributor
+1) Amir Nurhakim:
+[LinkedIn](https://www.linkedin.com/in/mrnrhkm/)
+[GitHub](https://github.com/amirrhkm)
+
+2) Nik Asyraf:
+[LinkedIn](https://www.linkedin.com/in/nikasyraf-ismail/)
+[GitHub](https://github.com/AsyrafIsmail)
