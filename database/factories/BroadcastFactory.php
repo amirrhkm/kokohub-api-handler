@@ -2,20 +2,15 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Koko;
+use App\Models\Broadcast;
 use App\Models\User;
+use App\Models\Koko;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Broadcast>
- */
 class BroadcastFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Broadcast::class;
+
     public function definition(): array
     {
         $broadcastTypes = [
@@ -24,15 +19,16 @@ class BroadcastFactory extends Factory
             'BE' => "Events"
         ];
 
-        $broadcastType = $this->faker->randomElement($broadcastTypes);
+        $typeKey = array_rand($broadcastTypes);
+        $broadcastType = $broadcastTypes[$typeKey];
 
         static $counter = 1;
-        $id = $broadcastType . str_pad($counter++, 2, '0', STR_PAD_LEFT);
+        $id = $typeKey . str_pad($counter++, 2, '0', STR_PAD_LEFT);
 
         return [
             'broadcast_id' => $id,
-            'user_id' => User::factory(),
-            'koko_id' => Koko::factory(),
+            'user_id' => User::inRandomOrder()->first()->user_id,
+            'koko_id' => Koko::inRandomOrder()->first()->koko_id,
             'title' => $this->faker->sentence(5),
             'type' => $broadcastType,
             'content' => $this->faker->paragraph(5)
